@@ -1,10 +1,11 @@
 'use client';
 
 import { Editor } from '@tiptap/react';
+import ToolbarButton from './ToolbarButton';
 
-interface ToolbarProps {
+type ToolbarProps = {
   editor: Editor | null;
-}
+};
 
 export default function Toolbar({ editor }: ToolbarProps) {
   if (!editor) {
@@ -13,41 +14,50 @@ export default function Toolbar({ editor }: ToolbarProps) {
 
   return (
     <div className="toolbar flex gap-2">
-      <button
-        onClick={() => editor.chain().focus().toggleBold().run()}
-        disabled={!editor.can().chain().focus().toggleBold().run()}
-        className={editor.isActive('bold') ? 'is-active' : ''}
-        type="button"
+      {/*bold*/}
+      <ToolbarButton
+        editor={editor}
+        nodeOrMark="bold"
+        command={(chain) => chain.toggleBold()}
       >
         Bold
-      </button>
+      </ToolbarButton>
 
-      <button
-        onClick={() => editor.chain().focus().toggleItalic().run()}
-        disabled={!editor.can().chain().focus().toggleItalic().run()}
-        className={editor.isActive('italic') ? 'is-active' : ''}
-        type="button"
+      {/*italic*/}
+      <ToolbarButton
+        editor={editor}
+        nodeOrMark="italic"
+        command={(chain) => chain.toggleItalic()}
       >
         Italic
-      </button>
+      </ToolbarButton>
 
-      <button
-        onClick={() => editor.chain().focus().toggleStrike().run()}
-        disabled={!editor.can().chain().focus().toggleStrike().run()}
-        className={editor.isActive('strike') ? 'is-active' : ''}
-        type="button"
+      {/*strike*/}
+      <ToolbarButton
+        editor={editor}
+        nodeOrMark="strike"
+        command={(chain) => chain.toggleStrike()}
       >
         Strike
-      </button>
+      </ToolbarButton>
 
-      <button
-        onClick={() => editor.chain().focus().toggleUnderline().run()}
-        disabled={!editor.can().chain().focus().toggleUnderline().run()}
-        className={editor.isActive('underline') ? 'is-active' : ''}
-        type="button"
+      {/*underline*/}
+      <ToolbarButton
+        editor={editor}
+        nodeOrMark="underline"
+        command={(chain) => chain.toggleUnderline()}
       >
-        underline
-      </button>
+        Underline
+      </ToolbarButton>
+
+      {/*bullet list*/}
+      <ToolbarButton
+        editor={editor}
+        nodeOrMark="bulletList"
+        command={(chain) => chain.toggleBulletList()}
+      >
+        Bullet List
+      </ToolbarButton>
     </div>
   );
 }
