@@ -58,6 +58,15 @@ export default function Toolbar({ editor }: ToolbarProps) {
       >
         Bullet List
       </ToolbarButton>
+
+      {/*ordered list*/}
+      <ToolbarButton
+        editor={editor}
+        nodeOrMark="orderedList"
+        command={(chain) => chain.toggleOrderedList()}
+      >
+        Ordered List
+      </ToolbarButton>
     </div>
   );
 }
