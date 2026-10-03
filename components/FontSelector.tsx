@@ -1,4 +1,6 @@
-import { Editor } from '@tiptap/react';
+'use client';
+
+import { Editor, useEditorState } from '@tiptap/react';
 
 type FontSelectorProps = {
   editor: Editor;
@@ -6,7 +8,7 @@ type FontSelectorProps = {
 
 const FONTS = [
   // Generic / System Fallbacks
-  { name: 'Default (Sans-serif)', value: 'Inter, sans-serif' },
+  { name: 'Default', value: 'Inter, sans-serif' },
   { name: 'Serif', value: 'Georgia, serif' },
   { name: 'Monospace', value: 'monospace' },
 
@@ -53,33 +55,29 @@ const FONTS = [
 ];
 
 export default function FontSelector({ editor }: FontSelectorProps) {
-  const currentFont =
-    FONTS.find((font) =>
-      font.value
-        ? editor.isActive('textStyle', { fontFamily: font.value })
-        : false,
-    )?.value || '';
+  // Subscribes to editor state changes so the component re-renders when selection updates
+  const currentFont = useEditorState({
+    editor,
+    selector: (ctx) =>
+      ctx.editor.getAttributes('textStyle').fontFamily || 'Default',
+  });
+  console.log(currentFont);
+
+  if (!editor) return null;
 
   return (
-    <>
-      {/* font selector dropdown */}
-      <select
-        value={currentFont}
-        onChange={(e) => {
-          const value = e.target.value;
-          if (value === '') {
-            editor.commands.unsetFontFamily();
-          } else {
-            editor.commands.setFontFamily(value);
-          }
-        }}
-      >
-        {FONTS.map((font) => (
-          <option key={font.name} value={font.value}>
-            {font.name}
-          </option>
-        ))}
-      </select>
-    </>
+    <select
+      value={currentFont}
+      onChange={(e) => {
+        const value = e.target.value;
+        editor.commands.setFontFamily(value);
+      }}
+    >
+      {FONTS.map((font) => (
+        <option key={font.name} value={font.value}>
+          {font.name}
+        </option>
+      ))}
+    </select>
   );
 }
