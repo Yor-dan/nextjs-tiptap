@@ -2,6 +2,7 @@
 
 import { Editor } from '@tiptap/react';
 import ToolbarButton from './ToolbarButton';
+import FontSelector from './FontSelector';
 
 type ToolbarProps = {
   editor: Editor | null;
@@ -67,6 +68,8 @@ export default function Toolbar({ editor }: ToolbarProps) {
       >
         Ordered List
       </ToolbarButton>
+
+      <FontSelector editor={editor} />
     </div>
   );
 }
