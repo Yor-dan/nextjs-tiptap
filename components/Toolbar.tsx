@@ -3,6 +3,7 @@
 import { Editor } from '@tiptap/react';
 import ToolbarButton from './ToolbarButton';
 import FontSelector from './FontSelector';
+import FontSize from './FontSize';
 
 type ToolbarProps = {
   editor: Editor | null;
@@ -70,6 +71,8 @@ export default function Toolbar({ editor }: ToolbarProps) {
       </ToolbarButton>
 
       <FontSelector editor={editor} />
+
+      <FontSize editor={editor} />
     </div>
   );
 }
