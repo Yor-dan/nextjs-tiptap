@@ -2,6 +2,7 @@ import { Editor } from '@tiptap/react';
 import ToolbarButton from './ToolbarButton';
 import FontSelector from './FontFamily';
 import FontSize from './FontSize';
+import InsertImage from './InsertImage';
 
 type ToolbarProps = {
   editor: Editor | null;
@@ -71,6 +72,8 @@ export default function Toolbar({ editor }: ToolbarProps) {
       <FontSelector editor={editor} />
 
       <FontSize editor={editor} />
+
+      <InsertImage editor={editor} />
     </div>
   );
 }
