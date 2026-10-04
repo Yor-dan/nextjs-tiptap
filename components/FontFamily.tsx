@@ -1,7 +1,7 @@
 import { Editor, useEditorState } from '@tiptap/react';
 
 type FontSelectorProps = {
-  editor: Editor;
+  editor: Editor | null;
 };
 
 const FONTS = [
@@ -57,7 +57,7 @@ export default function FontSelector({ editor }: FontSelectorProps) {
   const currentFont = useEditorState({
     editor,
     selector: (ctx) =>
-      ctx.editor.getAttributes('textStyle').fontFamily ||
+      ctx.editor?.getAttributes('textStyle').fontFamily ||
       'Arial, "Helvetica Neue", Helvetica, sans-serif',
   });
 

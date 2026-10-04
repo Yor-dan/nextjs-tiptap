@@ -1,7 +1,7 @@
 import { Editor, useEditorState } from '@tiptap/react';
 
 type FontSizeProps = {
-  editor: Editor;
+  editor: Editor | null;
 };
 
 export const SIZES = [
@@ -23,8 +23,11 @@ export const SIZES = [
 export default function FontSize({ editor }: FontSizeProps) {
   const currentFontSize = useEditorState({
     editor,
-    selector: (ctx) => ctx.editor.getAttributes('textStyle').fontSize || '16px',
+    selector: (ctx) =>
+      ctx.editor?.getAttributes('textStyle').fontSize || '16px',
   });
+
+  if (!editor) return null;
 
   return (
     <select
