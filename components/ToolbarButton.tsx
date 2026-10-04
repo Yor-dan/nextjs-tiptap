@@ -1,5 +1,3 @@
-'use client';
-
 import { Editor, ChainedCommands } from '@tiptap/react';
 
 type ToolbarButtonProps = {

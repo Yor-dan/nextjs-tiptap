@@ -1,5 +1,3 @@
-'use client';
-
 import { Editor } from '@tiptap/react';
 import ToolbarButton from './ToolbarButton';
 import FontSelector from './FontFamily';
