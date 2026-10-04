@@ -8,50 +8,50 @@ type FontSelectorProps = {
 
 const FONTS = [
   // Generic / System Fallbacks
-  { name: 'Default', value: 'Inter, sans-serif' },
-  { name: 'Serif', value: 'Georgia, serif' },
-  { name: 'Monospace', value: 'monospace' },
+  { label: 'Default', value: 'Inter, sans-serif' },
+  { label: 'Serif', value: 'Georgia, serif' },
+  { label: 'Monospace', value: 'monospace' },
 
   // Standard Web-Safe Sans-Serif
-  { name: 'Arial', value: 'Arial, "Helvetica Neue", Helvetica, sans-serif' },
-  { name: 'Arial Black', value: '"Arial Black", Gadget, sans-serif' },
-  { name: 'Comic Sans MS', value: '"Comic Sans MS", cursive, sans-serif' },
-  { name: 'Impact', value: 'Impact, Charcoal, sans-serif' },
+  { label: 'Arial', value: 'Arial, "Helvetica Neue", Helvetica, sans-serif' },
+  { label: 'Arial Black', value: '"Arial Black", Gadget, sans-serif' },
+  { label: 'Comic Sans MS', value: '"Comic Sans MS", cursive, sans-serif' },
+  { label: 'Impact', value: 'Impact, Charcoal, sans-serif' },
   {
-    name: 'Lucida Sans',
+    label: 'Lucida Sans',
     value: '"Lucida Sans Unicode", "Lucida Grande", sans-serif',
   },
   {
-    name: 'Segoe UI',
+    label: 'Segoe UI',
     value: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif',
   },
-  { name: 'Tahoma', value: 'Tahoma, Verdana, Segoe, sans-serif' },
+  { label: 'Tahoma', value: 'Tahoma, Verdana, Segoe, sans-serif' },
   {
-    name: 'Trebuchet MS',
+    label: 'Trebuchet MS',
     value: '"Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", sans-serif',
   },
-  { name: 'Verdana', value: 'Verdana, Geneva, sans-serif' },
+  { label: 'Verdana', value: 'Verdana, Geneva, sans-serif' },
 
   // Standard Web-Safe Serif
   {
-    name: 'Georgia',
+    label: 'Georgia',
     value: 'Georgia, Cambria, "Times New Roman", Times, serif',
   },
   {
-    name: 'Palatino',
+    label: 'Palatino',
     value: '"Palatino Linotype", "Book Antiqua", Palatino, serif',
   },
   {
-    name: 'Times New Roman',
+    label: 'Times New Roman',
     value: '"Times New Roman", Times, Baskerville, Georgia, serif',
   },
 
   // Standard Web-Safe Monospace
   {
-    name: 'Courier New',
+    label: 'Courier New',
     value: '"Courier New", Courier, "Lucida Sans Typewriter", monospace',
   },
-  { name: 'Lucida Console', value: '"Lucida Console", Monaco, monospace' },
+  { label: 'Lucida Console', value: '"Lucida Console", Monaco, monospace' },
 ];
 
 export default function FontSelector({ editor }: FontSelectorProps) {
@@ -74,8 +74,8 @@ export default function FontSelector({ editor }: FontSelectorProps) {
       }}
     >
       {FONTS.map((font) => (
-        <option key={font.name} value={font.value}>
-          {font.name}
+        <option key={font.label} value={font.value}>
+          {font.label}
         </option>
       ))}
     </select>
