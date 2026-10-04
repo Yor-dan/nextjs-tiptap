@@ -2,7 +2,7 @@
 
 import { Editor } from '@tiptap/react';
 import ToolbarButton from './ToolbarButton';
-import FontSelector from './FontSelector';
+import FontSelector from './FontFamily';
 import FontSize from './FontSize';
 
 type ToolbarProps = {
