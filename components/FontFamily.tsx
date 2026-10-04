@@ -59,7 +59,8 @@ export default function FontSelector({ editor }: FontSelectorProps) {
   const currentFont = useEditorState({
     editor,
     selector: (ctx) =>
-      ctx.editor.getAttributes('textStyle').fontFamily || 'Default',
+      ctx.editor.getAttributes('textStyle').fontFamily ||
+      'Arial, "Helvetica Neue", Helvetica, sans-serif',
   });
   console.log(currentFont);
 
